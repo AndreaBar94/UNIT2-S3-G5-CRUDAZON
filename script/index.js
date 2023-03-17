@@ -44,6 +44,7 @@ function handleSubmit(event) {
 			alert("Si è verificato un errore durante la creazione del prodotto: " + error.message);
 		});
 }
+
 //comparsa tasto modifica prodotti
 let modifyBtn1 = document.getElementById("modifyBtn");
 modifyBtn1.addEventListener("click", () => {
@@ -52,7 +53,6 @@ modifyBtn1.addEventListener("click", () => {
 		cardModBtn.style.display = "inline-block";
 	});
 });
-//form di modifica
 
 //mostra a schermo i prodotti
 let onScreenProduct = async () => {
@@ -82,85 +82,3 @@ let onScreenProduct = async () => {
 	}
 };
 onScreenProduct();
-
-function modifyProduct(event) {
-	document.addEventListener("DOMContentLoaded", function () {
-		// Recupera l'ID del prodotto dall'URL
-		const urlParams = new URLSearchParams(window.location.search);
-		console.log(urlParams);
-		const productId = urlParams.get("id");
-
-		// Effettua una richiesta GET al server per ottenere i dati del prodotto da modificare
-		fetch(`https://striveschool-api.herokuapp.com/api/product/ + ${productId}`, {
-			headers: {
-				Authorization:
-					"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDE0MzI5NGY4MWI0MjAwMTM5YjI3ZWQiLCJpYXQiOjE2NzkwNTI4NTUsImV4cCI6MTY4MDI2MjQ1NX0.8Xv17qdHRaPyxhYsL5-7jeEKLcYdfoPIijkoSwv8WJk",
-			},
-		})
-			.then((response) => {
-				if (response.ok) {
-					return response.json();
-				} else {
-					throw new Error("Errore durante il recupero dei dati del prodotto.");
-				}
-			})
-			.then((data) => {
-				const nameField = document.getElementById("name");
-				const descriptionField = document.getElementById("description");
-				const priceField = document.getElementById("price");
-				const brandField = document.getElementById("brand");
-				const URLField = document.getElementById("URL");
-
-				nameField.value = data.name;
-				descriptionField.value = data.description;
-				priceField.value = data.price;
-				brandField.value = data.brand;
-				URLField.value = data.URL;
-			})
-			.catch((error) => {
-				console.error(error);
-				alert("Si è verificato un errore durante il recupero dei dati del prodotto.");
-			});
-
-		document.getElementById("modifyForm").addEventListener("submit", function (event) {
-			event.preventDefault();
-
-			const name = document.getElementById("name").value;
-			const description = document.getElementById("description").value;
-			const price = document.getElementById("price").value;
-			const brand = document.getElementById("brand").value;
-			const URL = document.getElementById("URL").value;
-
-			const data = {
-				name: name,
-				description: description,
-				price: price,
-				brand: brand,
-				URL: URL,
-			};
-
-			// Effettua la richiesta PUT al server
-			fetch(`https://striveschool-api.herokuapp.com/api/product/ + ${productId}`, {
-				method: "PUT",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization:
-						"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDE0MzI5NGY4MWI0MjAwMTM5YjI3ZWQiLCJpYXQiOjE2NzkwNTI4NTUsImV4cCI6MTY4MDI2MjQ1NX0.8Xv17qdHRaPyxhYsL5-7jeEKLcYdfoPIijkoSwv8WJk",
-				},
-				body: JSON.stringify(data),
-			})
-				.then((response) => {
-					if (response.ok) {
-						alert("Il prodotto è stato modificato con successo!");
-						window.location.href = "index.html";
-					} else {
-						alert("Si è verificato un errore durante la modifica del prodotto.");
-					}
-				})
-				.catch((error) => {
-					console.error(error);
-					alert("Si è verificato un errore durante la modifica del prodotto.");
-				});
-		});
-	});
-}
