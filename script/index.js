@@ -87,6 +87,7 @@ function modifyProduct(event) {
 	document.addEventListener("DOMContentLoaded", function () {
 		// Recupera l'ID del prodotto dall'URL
 		const urlParams = new URLSearchParams(window.location.search);
+		console.log(urlParams);
 		const productId = urlParams.get("id");
 
 		// Effettua una richiesta GET al server per ottenere i dati del prodotto da modificare
