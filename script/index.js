@@ -88,26 +88,22 @@ function modifyProduct(event) {
 		// Recupera l'ID del prodotto dall'URL
 		const urlParams = new URLSearchParams(window.location.search);
 		const productId = urlParams.get("id");
-		console.log(productId);
+
 		// Effettua una richiesta GET al server per ottenere i dati del prodotto da modificare
-		fetch(`https://striveschool-api.herokuapp.com/api/product/${productId}`, {
+		fetch(`https://striveschool-api.herokuapp.com/api/product/ + ${productId}`, {
 			headers: {
 				Authorization:
 					"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDE0MzI5NGY4MWI0MjAwMTM5YjI3ZWQiLCJpYXQiOjE2NzkwNTI4NTUsImV4cCI6MTY4MDI2MjQ1NX0.8Xv17qdHRaPyxhYsL5-7jeEKLcYdfoPIijkoSwv8WJk",
 			},
 		})
 			.then((response) => {
-				// Se la risposta è OK (200)
 				if (response.ok) {
-					// Estrai i dati dalla risposta JSON
 					return response.json();
 				} else {
-					// Altrimenti lancia un errore
 					throw new Error("Errore durante il recupero dei dati del prodotto.");
 				}
 			})
 			.then((data) => {
-				// Recupera i dati del prodotto e assegnali ai campi del form
 				const nameField = document.getElementById("name");
 				const descriptionField = document.getElementById("description");
 				const priceField = document.getElementById("price");
@@ -121,23 +117,19 @@ function modifyProduct(event) {
 				URLField.value = data.URL;
 			})
 			.catch((error) => {
-				// Se c'è stato un errore, mostra un messaggio di errore
 				console.error(error);
 				alert("Si è verificato un errore durante il recupero dei dati del prodotto.");
 			});
 
-		// Aggiungi un event listener al form di modifica
 		document.getElementById("modifyForm").addEventListener("submit", function (event) {
 			event.preventDefault();
 
-			// Recupera i dati dal form
 			const name = document.getElementById("name").value;
 			const description = document.getElementById("description").value;
 			const price = document.getElementById("price").value;
 			const brand = document.getElementById("brand").value;
 			const URL = document.getElementById("URL").value;
 
-			// Costruisci l'oggetto con i dati da inviare al server
 			const data = {
 				name: name,
 				description: description,
@@ -147,7 +139,7 @@ function modifyProduct(event) {
 			};
 
 			// Effettua la richiesta PUT al server
-			fetch(`https://striveschool-api.herokuapp.com/api/product/${productId}`, {
+			fetch(`https://striveschool-api.herokuapp.com/api/product/ + ${productId}`, {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",
