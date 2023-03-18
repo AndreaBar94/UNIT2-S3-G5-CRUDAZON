@@ -70,10 +70,6 @@ const handleSubmit = (event) => {
 		brand: document.getElementById("brand").value,
 		imageUrl: document.getElementById("URL").value,
 	};
-	if (!name || !description || !price || !url || !brand) {
-		alert("Tutti i campi sono obbligatori!");
-		return;
-	}
 
 	fetch(endpoint, {
 		method,
@@ -121,15 +117,16 @@ window.onload = () => {
 			products.forEach((product, index) => {
 				let col = document.createElement("div");
 				col.className = "col";
+				col.classList.add("g-5");
 				col.innerHTML = `
-							<div class="card mb-4 shadow-sm">
-				                <img src="${products[index].imageUrl}" class="card-img-top" alt="none">
+							<div class="card shadow border-warning rounded-3">
+				                <img src="${products[index].imageUrl}" class="card-img-top img-fluid" alt="none">
 				                    <div class="card-body">
 				                        <h5 class="card-title">${products[index].name}</h5>
 				                        <p class="card-text">${products[index].description}</p>
 				                        <p class="card-text">€ ${products[index].price}</p>
-				                        <a href="details.html?id=${products[index]._id}" class="btn btn-primary">Scopri di piú</a>
-				                        <a href="back-office.html?id=${products[index]._id}" id="cardModBtn" class="btn btn-primary">Modify</a>
+				                        <a href="details.html?id=${products[index]._id}" class="btn btn-outline-warning text-dark">Scopri di piú</a>
+				                        <a href="back-office.html?id=${products[index]._id}" id="cardModBtn" class="btn btn-secondary">Modify</a>
 					                </div>
 					            </div>
 							</div>`;
@@ -137,32 +134,3 @@ window.onload = () => {
 			});
 		});
 };
-
-//dettaglio prodotto
-// window.onload = () => {
-// 	fetch(endpoint, {
-// 		headers: {
-// 			Authorization: authorization,
-// 		},
-// 	})
-// 		.then((responseObj) => responseObj.json())
-// 		.then((detail) => {
-// 			let row = document.getElementById("row1");
-
-// 			let col = document.createElement("div");
-// 			col.className = "col";
-// 			col.innerHTML = `
-// 							<div class="card mb-4 shadow-sm">
-// 				                <img src="${detail[index].imageUrl}" class="card-img-top" alt="none">
-// 				                    <div class="card-body">
-// 				                        <h5 class="card-title">${detail[index].name}</h5>
-// 				                        <p class="card-text">${detail[index].description}</p>
-// 				                        <p class="card-text">€ ${detail[index].price}</p>
-// 				                        <a href="details.html?id=${detail[index]._id}" class="btn btn-primary">Scopri di piú</a>
-// 				                        <a href="back-office.html?id=${detail[index]._id}" id="cardModBtn" class="btn btn-primary">Modify</a>
-// 					                </div>
-// 					            </div>
-// 							</div>`;
-// 			row.appendChild(col);
-// 		});
-// };
