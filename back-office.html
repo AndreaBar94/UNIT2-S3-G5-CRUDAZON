@@ -17,7 +17,6 @@
 			<div class="mb-3">
 				<label for="name" class="form-label">Nome</label>
 				<input type="text" class="form-control" id="name" placeholder="Inserisci un nome" aria-describedby="name" required />
-				<div class="form-text text-danger">Inserisci un nome</div>
 			</div>
 			<div class="mb-3">
 				<label for="description" class="form-label">Descrizione</label>
@@ -28,28 +27,24 @@
 					placeholder="Inserisci una descrizione"
 					row="4"
 					required></textarea>
-				<div class="form-text text-danger">Inserisci la descrizione</div>
 			</div>
 			<div class="mb-3">
 				<label for="price" class="form-label">Prezzo</label>
 				<input type="number" class="form-control" id="price" aria-describedby="price" placeholder="€" required />
-				<div class="form-text text-danger">Inserisci il prezzo</div>
 			</div>
 			<div class="mb-3">
 				<label for="price" class="form-label">Brand</label>
 				<input type="text" class="form-control" id="brand" aria-describedby="brand" placeholder="Brand" required />
-				<div class="form-text text-danger">Inserisci il brand</div>
 			</div>
 			<div class="mb-3">
 				<label for="time" class="form-label">URL</label>
 				<input type="text" class="form-control" id="URL" aria-describedby="time" placeholder="URL" required />
-				<div class="form-text text-danger">Inserisci l'URL</div>
 			</div>
 			<div class="d-flex gap-2">
-				<a href="index.html" class="btn btn-outline-secondary text-decoration-none">Cancel</a>
-				<button type="submit" id="submitBtn" class="btn btn-primary me-auto">Submit</button>
+				<a href="index.html" class="btn btn-outline-secondary text-decoration-none">Annulla</a>
+				<button type="submit" id="submitBtn" class="btn btn-primary me-auto">Crea il nuovo prodotto</button>
 				<button type="submit" id="modify" class="btn btn-primary me-auto d-none">Modifica</button>
-				<button id="delete-btn" type="button" class="btn btn-danger d-none" onclick="handleDelete()">Delete</button>
+				<button id="delete-btn" type="button" class="btn btn-danger d-none" onclick="handleDelete()">Elimina</button>
 			</div>
 		</form>
 
