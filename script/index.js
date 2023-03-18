@@ -126,7 +126,7 @@ window.onload = () => {
 				                        <p class="card-text">${products[index].description}</p>
 				                        <p class="card-text">€ ${products[index].price}</p>
 				                        <a href="details.html?id=${products[index]._id}" class="btn btn-outline-warning text-dark">Scopri di piú</a>
-				                        <a href="back-office.html?id=${products[index]._id}" id="cardModBtn" class="btn btn-secondary">Modify</a>
+				                        <a href="back-office.html?id=${products[index]._id}" id="cardModBtn" class="btn btn-secondary">Modifica</a>
 					                </div>
 					            </div>
 							</div>`;
