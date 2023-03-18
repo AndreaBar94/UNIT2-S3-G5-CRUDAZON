@@ -10,7 +10,7 @@ const method = selectedId ? "PUT" : "POST";
 
 window.onload = () => {
 	if (selectedId) {
-		document.getElementById("back-office-title").innerText = "Modifica l'articolo selezionato";
+		document.getElementById("back-office-title").innerText = "Modifica l'articolo selezionato:";
 		document.getElementById("submitBtn").classList.add("d-none");
 		document.getElementById("modify").classList.remove("d-none");
 		document.getElementById("delete-btn").classList.remove("d-none");

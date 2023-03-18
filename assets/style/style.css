@@ -1,7 +1,7 @@
 #cardModBtn {
 	display: none;
 }
-#box {
+.box {
 	background-color: rgba(255, 166, 0, 0.185);
 }
 #detailCard {
